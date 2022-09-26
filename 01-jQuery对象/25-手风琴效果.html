@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .king .big {
+            float: left;
+            position: absolute;
+            top: 0px;
+            width: 500px;
+            height: 400px;
+            z-index: -1;
+        }
+
+        .king {
+            width: 904px;
+            height: 400px;
+            margin: 100px auto;
+            margin-left: 100px;
+            overflow: hidden;
+            /* display: flex; */
+            /* background-color: rgb(68, 40, 40); */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .king li {
+            height: 400px;
+            float: left;
+            position: relative;
+        }
+
+        .king li p {
+            width: 100px;
+            height: 400px;
+            background-color: rgba(95, 158, 160, .5);
+            font-size: 55px;
+            margin-left: 0px;
+            line-height: 170px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="king">
+        <ul>
+            <li>
+                <a href="#">
+                    <p class="small">芒种</p>
+                    <img src="./image/2 (1).jpg" class="big">
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <p class="small">夏至</p>
+                    <img src="./image/2 (2).jpg" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <p class="small">白露</p>
+                    <img src="./image/2 (3).jpg" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <p class="small">小暑</p>
+                    <img src="./image/2 (4).jpg" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <p class="small">立秋</p>
+                    <img src="./image/2 (5).jpg" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $(".king li").mouseenter(function () {
+                $(this).stop().animate({
+                    width: 500,
+                }).siblings("li").stop().animate({
+                    width: 100,
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

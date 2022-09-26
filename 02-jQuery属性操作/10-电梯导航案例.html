@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售</title>
+    <link rel="icon" type="image/x-icon" href="./images/书籍.ico" />
+    <script src="./jquery.min.js"></script>
+    <script src="./电梯.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .w {
+            width: 1280px;
+            margin: auto;
+        }
+
+        .header li {
+            list-style: none;
+        }
+
+        .box li {
+            list-style: none;
+        }
+
+        .changgu li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            /* position: sticky;
+            top: 0px; */
+            height: 100px;
+            /* background-color: rgb(183, 235, 244); */
+            border-bottom: 1px solid rgb(123, 111, 132);
+            /* background-color: rgba(197, 138, 95, 0.3) */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(./images/2.1\ \(12\).jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .logo {
+            float: left;
+            margin-top: 16px;
+            margin-left: 50px;
+            text-shadow: 3px 3px 2px rgb(153, 151, 151);
+
+        }
+
+        .logo a {
+            font-size: 30px;
+            font-family: '楷体';
+            font-weight: bold;
+            color: rgb(42, 161, 132);
+        }
+
+        .search {
+            float: left;
+            width: 400px;
+            height: 40px;
+            margin-left: 230px;
+            margin-top: 30px;
+        }
+
+        .search .srch {
+            float: left;
+            width: 340px;
+            height: 40px;
+            border: 1px solid black;
+            border-right: 0;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        .search .btn {
+            float: left;
+            width: 38px;
+            height: 42px;
+            border: 1px solid black;
+            background: url(./images/搜索.png);
+        }
+
+        .nav {
+            float: right;
+            margin-right: 30px;
+            margin-top: 25px;
+        }
+
+        .nav ul li {
+            float: left;
+        }
+
+        .nav ul li:hover a {
+            color: rgb(253, 253, 253);
+        }
+
+        .nav ul li a {
+            padding: 0 20px;
+            color: #050505;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: '楷体';
+            line-height: 50px;
+        }
+
+        .box a:hover {
+            color: rgb(22, 45, 117);
+        }
+
+        .b1 {
+            height: 30px;
+            background-color: rgb(224, 88, 79);
+            /* padding-top: 5px; */
+
+        }
+
+        .b1 ul li {
+            position: relative;
+            float: left;
+            margin-left: 70px;
+            /* margin: 0 100px; */
+        }
+
+        .b1 ul li a:hover {
+            border-bottom: 2px solid #f6f7f8;
+        }
+
+        .b1 ul li a {
+            /* float: left; */
+            padding: 0 25px;
+            color: #050505;
+            /* font-size: 10px; */
+            /* padding-left: 1px; */
+            line-height: 30px;
+        }
+
+        .b2 {
+            float: left;
+            margin-left: 50px;
+            margin-top: 15px;
+            color: rgb(153, 151, 151);
+        }
+
+        .b2 a {
+            color: rgb(153, 151, 151);
+        }
+
+        .b3 {
+            width: 350px;
+            height: 350px;
+            float: left;
+            margin-top: 30px;
+            margin-left: 20px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(153, 151, 151);
+        }
+
+        .b3 img {
+            margin-left: 25px;
+            margin-top: 25px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .b4 {
+            width: 780px;
+            height: 110px;
+            position: absolute;
+            margin-top: 30px;
+            margin-left: 400px;
+            margin-right: 50px;
+            font-size: 15px;
+            border-bottom: 1px dotted rgb(153, 151, 151)
+        }
+
+        .b4 p {
+            font-size: 25px;
+            color: black;
+        }
+
+        .b5 {
+            width: 780px;
+            height: 200px;
+            margin-top: 155px;
+            margin-left: 400px;
+            margin-right: 50px;
+            font-size: 15px;
+            border-bottom: 1px dotted rgb(153, 151, 151);
+        }
+
+        .b5 p {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .b6 span {
+            font-size: 15px;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .b6 button {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        .b6 input {
+            text-align: center;
+            width: 20px;
+            height: 20px;
+        }
+
+        .b7 {
+            float: right;
+            margin-top: 20px;
+            margin-right: 50px;
+        }
+
+        .collection {
+            /* float: right; */
+            width: 100px;
+            height: 60px;
+            border-radius: 30px;
+            /* margin-right: 80px;
+            margin-top: -60px; */
+            border: 1px solid rgb(206, 197, 194);
+            /* background-color: rgba(211, 58, 20, .4); */
+        }
+
+        .collection img {
+            float: left;
+            padding-left: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .coll {
+            float: left;
+            margin-left: 7px;
+            color: black;
+            font-weight: 20px;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .shopping {
+            /* float: right; */
+            width: 140px;
+            height: 60px;
+            border-radius: 30px;
+            margin-left: 20px;
+            border: 1px solid rgb(206, 197, 194);
+            /* background-color: rgba(211, 58, 20, .4); */
+        }
+
+        .shopping img {
+            float: left;
+            padding-left: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .shop {
+            float: left;
+            margin-left: 7px;
+            color: black;
+            font-weight: 20px;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .b8 {
+            float: left;
+            margin-top: 20px;
+            /* color: black; */
+        }
+
+        .floor {
+            float: left;
+        }
+
+        .d1 {
+            float: left;
+            margin-left: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .d1 .a1 {
+            height: 30px;
+            width: 80px;
+            line-height: 30px;
+            text-align: center;
+            padding-top: -15px;
+            font-weight: bold;
+            background-color: rgb(249, 249, 249);
+            color: black;
+            border-top: 2px solid brown;
+        }
+
+        .d1 .a2 {
+            width: 1100px;
+            margin-top: -20px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-top: 1px solid rgb(153, 151, 151);
+            border-bottom: 1px solid rgb(153, 151, 151);
+            color: black;
+        }
+
+
+        .a2 a {
+            color: rgb(153, 151, 151);
+        }
+
+        .a3,
+        .a4,
+        .a5 {
+            float: left;
+            width: 370px;
+            height: 130px;
+            margin-top: -8px;
+            /* background-color: rgb(249, 249, 249); */
+            border-bottom: 1px solid rgb(153, 151, 151);
+        }
+
+        .a3 li,
+        .a4 li,
+        .a5 li {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .d1 .a6,
+        .d1 .a7 {
+            color: rgb(77, 72, 72);
+            width: 1100px;
+            margin-bottom: 10px;
+            border-top: 1px solid rgb(153, 151, 151);
+            /* border-bottom: 1px solid rgb(153, 151, 151); */
+        }
+
+        .d1 .a6 li,
+        .d1 .a7 li {
+            margin-left: 25px;
+            padding-top: 5px;
+            margin-right: 60px;
+        }
+
+        .d1 .a1 a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .a6 li a,
+        .a7 li a {
+            color: royalblue;
+        }
+
+        .a7 li {
+            margin-top: 10px;
+        }
+
+        .lastest {
+            margin-top: 100px;
+            float: left;
+            width: 1280px;
+            /* margin-bottom: 250px; */
+
+        }
+
+        h3 {
+            margin-left: 60px;
+            padding-top: 20px;
+        }
+
+        .h3 {
+            float: left;
+            margin-left: 30px;
+        }
+
+        hr {
+            margin-top: 10px;
+            width: 120px;
+            margin-left: 40px;
+        }
+
+        .lastest ul {
+            float: left;
+            margin-top: 10px;
+            font-size: 15px;
+            margin-left: 65px;
+        }
+
+        .lastest ul li {
+            margin-top: 5px;
+        }
+
+        .lastest ul li a {
+            color: rgb(77, 72, 72);
+        }
+
+        .lastest ul li:hover a {
+            text-decoration: underline;
+            color: red;
+        }
+
+        .changgu {
+            float: left;
+            margin-left: 460px;
+            margin-top: 100px;
+            margin-bottom: 150px;
+        }
+
+        .changgu ul li {
+            float: left;
+        }
+
+        .changgu ul li:hover a {
+            text-decoration: underline;
+            color: red;
+        }
+
+        .changgu a {
+            color: rgb(85, 73, 73);
+        }
+
+        .changgu p {
+            color: rgb(85, 73, 73);
+            margin-top: 40px;
+        }
+
+        .return {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            /* float: right; */
+        }
+
+        .return img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .daohang {
+            position: fixed;
+            top: 100px;
+            display: none;
+            margin-top: 300px;
+            background-color: rgba(240, 240, 243, .5);
+        }
+
+        .daohang li {
+            width: 90px;
+            height: 40px;
+            border: 1px solid white;
+            list-style: none;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .floor li {
+            list-style: none;
+        }
+
+        .current {
+            background-color: rgba(218, 8, 8, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="header w">
+            <!-- logo -->
+            <div class="logo">
+                <a name="a1">
+                    <a href="首页.html"><b>123<br>&nbsp;&nbsp;&nbsp;文学城</b></a>
+                </a>
+            </div>
+            <!-- 搜索框 -->
+            <div class="search">
+                <input type="text" class="srch" placeholder="请输入关键词">
+                <input type="button" value="" class="btn">
+            </div>
+            <!-- 注册链接 -->
+            <div class="nav">
+                <ul>
+                    <li><a href="充值.html" target="_blank">充值</a></li>
+                    <li><a href="注册.html" target="_blank">注册</a></li>
+                    <li><a href="登录.html" target="_blank">登录</a></li>
+                    <li><a href="用户中心.html" target="_blank">我的</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="box w">
+            <div class="b1">
+                <ul>
+                    <!-- 以及导航栏的每一项 -->
+                    <li><a href="首页.html" target="_blank">首页</a></li>
+                    <li><a href="" target="_blank">畅销榜</a></li>
+                    <li><a href="#" target="_blank">新书榜</a></li>
+                    <li><a href="#" target="_blank">文学榜</a></li>
+                    <li><a href="#" target="_blank">童书榜</a></li>
+                    <li><a href="#" target="_blank">电子书</a></li>
+                    <li><a href="#" target="_blank">社科榜</a></li>
+                </ul>
+            </div>
+            <div class="b2">
+                <ul>
+                    <li>
+                        <a href="#">图书</a>&nbsp;>&nbsp;<a href="#">文学\小说</a>&nbsp;>&nbsp;<a
+                            href="#">小说</a>&nbsp;>&nbsp;<a href="#">历史、军事小说</a>
+                    </li>
+                    <div class="b3">
+                        <li>
+                            <img src="./images/图层 3.png" alt="">
+                        </li>
+
+                    </div>
+                    <div class="b4">
+                        <p>血战长津湖</p>
+                        朝鲜战争拐点之战，足以改变历史进程！比电影《长津湖》更燃的战场真相。亲历者实录，装备与意志的对决。零下40度严寒，人类历目前极残酷的会战之一；品牌与品牌之间的生死决战，交战双方永远无法遗忘的惨烈记忆。
+                        企业采购书卡&书目服务电话 028-83157118（法定工作日9:00-17:00）
+                    </div>
+                    <div class="b5">
+                        <ul>
+                            <li>定　　价 ：<s>￥52.00</s></li><br>
+                            <li>
+                                <p>现　　价 ：&nbsp;￥26.00</p>
+                            </li><br>
+                            <li>库　　存 ：现在有货</li><br>
+                            <li>作　　者 ：&nbsp;何楚舞,凤鸣,陆宏宇 著</li><br>
+                            <li>所属分类 ：&nbsp; <a href="#">图书</a>&nbsp;>&nbsp;<a href="#">文学\小说</a>&nbsp;>&nbsp;<a
+                                    href="#">小说</a>&nbsp;>&nbsp;<a href="#">历史、军事小说</a></li><br>
+                        </ul>
+                        <div class="b6">
+                            <span>购买数量 ：<button>+</button><input type="text" value="1"><button>-</button></span>
+                        </div>
+                        <div class="b8">
+                            <span>
+                                服　　务 ：
+                                正品低价|闪电发货|货到付款|高效退换货
+                            </span>
+                        </div>
+                        <div class="b7">
+                            <button class="collection"><img src="./images/收藏.png">
+                                <div class="coll">收藏</div>
+                            </button>
+                            <button class="shopping"><img src="./images/购物车.png">
+                                <div class="shop">加入购物车</div>
+                            </button>
+                            <button class="shopping"><img src="./images/购书.png">
+                                <div class="shop">立即购买</div>
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="floor">
+
+            <div class="d1" id="first">
+                <ul>
+                    <li class="a1">商品介绍</li><br>
+                    <li class="a2">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;快速导读：</span>
+                        <a href="#z1">&nbsp;目录&nbsp;</a>
+                        <a href="#z2">&nbsp;作者简介&nbsp;</a>
+                        <a href="#z3">&nbsp;内容简介&nbsp;</a>
+                        <a href="#z4">&nbsp;精彩内容</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="d1">
+                <ul>
+                    <li class="a1"><a name="z1">目录</a></li>
+                    <div class="a6">
+                        <li>序 </li>
+                        <li>章 台湾还是朝鲜</li>
+                        <li>第九兵团在南方海边练的是“下饺子”战术，接到的命令却是北上“吃火锅”，疑云顿时笼罩全军</li>
+                        <li>（一）钦点九兵团</li>
+                        <li>（二）台湾还是朝鲜</li>
+                        <li>（三）中国的底线 </li>
+                        <li>第二章 圣诞节攻势 </li>
+                        <li>圣诞节前，美国的小伙子们就可以回家了，很快“圣诞节攻势”成为了美军，乃至世界战争史上最具讽刺意味的词汇</li>
+                        <li><a>显示全部>>></a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="d1">
+                <ul>
+                    <li class="a1"><a name="z2">作者简介</a></li>
+                    <div class="a7">
+                        <li>何楚舞，作家、编剧、朝鲜战史研究专家。著有小说《野枪》《黄金弹壳》《热血1950》等书。 《很寒冷的冬天Ⅲ：血战长津湖》荣获第五届中国图书势力榜年度十大好书。
+                            何楚舞生长于呼伦贝尔草原和大兴安岭的交界地带。他在战争文学的丛林中放牧，在都市里播种荒诞喜剧的羊群。人性在硝烟中呐喊涅檗，欲望在现实中绽放出幻想之花，寓言之果。孤独妖艳落日温暖。
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="d1">
+                <ul>
+                    <li class="a1"><a name="z3">内容简介</a></li>
+                    <div class="a7">
+                        <li>长津湖之战是抗美援朝战争中，极为重要的一场战役，堪称历史的拐点，是中美双方品牌部队改变历史进程的一场决战。
+                            70余年前，中国人民志愿军第九兵团身穿单薄棉衣，在长津湖接近零下40度的严寒中与美国品牌师——陆战一师展开了一场长达28天的大战。战役的残酷程度超出了所有参战人员的想象，武器和战术的较量很终演变成双方意志力的殊死抗争。这场战争，这也成为中美两国军人永远无法忘怀的惨烈记忆，成为战争目前引起许多唏嘘感叹的经典战例。
+                            本书如实地记录了志愿军血战长津湖的战况，大量战斗情节和丰富战场细节来自亲身参战的老志愿军的口述以及美军的回忆资料，真实可信、令人震憾。他们是历史见证者.
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="d1">
+                <ul>
+                    <li class="a1"><a name="z4">精彩内容</a></li>
+                    <div class="a7">
+                        <li>钦点九兵团 1950 年6 月25 日，朝鲜内战爆发。 由于战略误判，战争已经开始了9 小时，杜鲁门总统才得到消息，美国领导人在忙乱中，聚在一起商讨如何应对朝鲜人民军的进攻。
+                            当天，美国要求联合国安理会采取行动。苏联并没有投反对票，因为苏联驻联合国代表雅科夫·马利克已经于这一年的1 月13
+                            日离开安理会，以抗议联合国拒绝中华人民共和国替代中华民国成为联合国的合法成员，苏联代表在6 月25 日的表决中缺席了。 6 月26
+                            日，美军太平洋部队奉命全力支持南朝鲜政权，第七舰队也侵入台湾地区海峡，防止中国人民解放军解放台湾地区。 6 月27
+                            日安理会再次通过决议，责成联合国向“大韩民国”提供可能需要的援助，以击退武装进攻并恢复这一地区的靠前和平与安全。7 月7
+                            日，通过了向朝鲜派遣“联合国军”的决议案，同意美国及其他国家的军队使用联合国的旗帜，并组织“联合国军司令部”，由美国批定“联合国军”很高指挥官。8
+                            日，美国总统杜鲁门任命美国远东军总司令麦克阿瑟为“联合国军总司令”。所谓“联合国军”实则主要为美国军队，还有英国、澳大利亚、荷兰、新西兰、加拿大、法国、菲律宾、土耳其、泰国、南非、希腊、比利时、卢森堡、哥伦比亚、埃塞俄比亚等国的少量军队，有些国家只是象征性地派兵。
+                            面对朝鲜的战局和美国出兵的形势，1950 年6 月28
+                            日，在中央人民政府委员会第八次会议上发表讲话，号召全国和全世界人民团结起来，进行充分的准备，打败美帝国主义的任何挑衅。中央军委根据主席提议，于7 月7 日和10 日，由主持先后召开
+                        </li>
+                        <li><a>显示全部>>></a></li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="daohang">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>目录</li>
+                <li>作者简介</li>
+                <li>内容简介</li>
+                <li>精彩内容</li>
+            </ul>
+        </div>
+        <div class="loopimg w">
+            <div class="lastest">
+                <div class="h3">
+                    <h3>新手入门</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">购物保障</a></li>
+                        <li><a href="#">购物流程</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="h3">
+                    <h3>配送服务</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">配送收费标准</a></li>
+                        <li><a href="#">快递查询入口</a></li>
+                        <li><a href="#">验货与签收</a></li>
+                    </ul>
+                </div>
+                <div class="h3">
+                    <h3>售后服务</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">退换货规则</a></li>
+                        <li><a href="#">如何申请售后服务</a></li>
+                        <li><a href="#">退款及提现</a></li>
+                    </ul>
+                </div>
+                <div class="h3">
+                    <h3>支付方式</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">货到付款</a></li>
+                        <li><a href="#">在线支付</a></li>
+                        <li><a href="#">银行转账/汇款</a></li>
+                        <li><a href="#">其他支付方式</a></li>
+                        <li><a href="#">交易安全防诈骗</a></li>
+                    </ul>
+                </div>
+                <div class="h3">
+                    <h3>我的订单</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">下单演示</a></li>
+                        <li><a href="#">订单状态/查询</a></li>
+                        <li><a href="#">订单取消</a></li>
+                        <li><a href="#">发票制度</a></li>
+                        <li><a href="#">积分制度</a></li>
+                    </ul>
+                </div>
+                <div class="h3 ">
+                    <h3>长顾服务</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">优惠卷</a></li>
+                        <li><a href="#">长顾购物卡</a></li>
+                        <li><a href="#">畅销书推荐</a></li>
+                        <li><a href="#">交易条款</a></li>
+                    </ul>
+                </div>
+                <div class="changgu">
+                    <ul>
+                        <li><a href="关于我们.html" target="_blank">关于长顾</a>|</li>
+                        <li><a href="#">联系长顾</a>|</li>
+                        <li><a href="#">加入长顾</a>|</li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                    <p>
+                        &nbsp;&nbsp;&copy;changgu.com版权所有|客服热线:2010488382
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="return">
+            <a href="#a1"><img src="./images/顶部.png" alt="顶端"></a>
+        </div>
+        </div>
+    </body>
+
+</html>

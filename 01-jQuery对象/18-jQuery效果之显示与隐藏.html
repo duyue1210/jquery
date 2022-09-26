@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <script>
+        $(function () {
+            $("button").eq(1).click(function () {
+                // hide(speed,easing,fn) 里面有三个参数 第一个是速度 第二个是切换效果 默认是swing(可用参数为linear) 第三个是动画完成时执行的函数
+                $("div").hide(1000, "linear", function () {
+                    alert(1)
+                })
+            })
+            $("button").eq(0).click(function () {
+                // hide(speed,easing,fn) 里面有三个参数 第一个是速度 第二个是切换效果 默认是swing(可用参数为linear) 第三个是动画完成时执行的函数
+                $("div").show(1000, "linear", function () {
+                    alert(1)
+                })
+            })
+            $("button").eq(2).click(function () {
+                // hide(speed,easing,fn) 里面有三个参数 第一个是速度 第二个是切换效果 默认是swing(可用参数为linear) 第三个是动画完成时执行的函数
+                $("div").toggle(1000, "linear");
+            })
+            // 一般情况下 我们都不加参数直接显示隐藏就可以了
+        })
+    </script>
+</body>
+
+</html>

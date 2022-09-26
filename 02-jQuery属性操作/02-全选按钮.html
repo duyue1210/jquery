@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery.min.js"></script>
+    <title>购物车</title>
+    <script src="./全选.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .w {
+            width: 1100px;
+            margin: auto;
+        }
+
+        .header li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .A {
+            height: 100px;
+            /* background-color: rgb(183, 235, 244); */
+            border-bottom: 1px solid rgb(123, 111, 132);
+            /* background-color: rgba(252, 209, 209, 0.1); */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(./images/2.1\ \(12\).jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .logo {
+            float: left;
+            margin-top: 16px;
+            margin-left: 50px;
+            font-size: 30px;
+            font-family: '楷体';
+            font-weight: bold;
+            text-shadow: 3px 3px 2px rgb(153, 151, 151);
+
+        }
+
+        .logo a {
+            color: rgb(42, 161, 132);
+        }
+
+        .nav {
+            float: right;
+            margin-right: 100px;
+            margin-top: 25px;
+        }
+
+        .nav ul li {
+            float: left;
+        }
+
+        .nav ul li:hover a {
+            color: rgb(207, 108, 51);
+        }
+
+        .nav ul li a {
+            padding: 0 20px;
+            color: rgb(26, 24, 24);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: '楷体';
+            line-height: 50px;
+        }
+
+        .B {
+            height: 70px;
+            /* background-color: seagreen; */
+        }
+
+        .shopp {
+            width: 120px;
+            height: 50px;
+            background-color: rgb(228, 57, 60);
+            float: left;
+            margin-top: 20px;
+            border-top-right-radius: 30px;
+        }
+
+        .shopp .z1 {
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: '楷体';
+            text-align: center;
+        }
+
+        .shopp .z2 {
+            width: 1100px;
+            border-bottom: 3px solid rgb(228, 57, 60);
+        }
+
+        .all {
+            margin-top: 20px;
+            float: left;
+            border: 1px solid rgb(153, 151, 151)
+        }
+
+        .name {
+            float: left;
+            width: 1100px;
+            /* height: 20px; */
+            /* margin-top: 20px; */
+            border-bottom: 1px solid black;
+        }
+
+        .name ul li {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .name .z2 {
+            width: 330px;
+            border-right: 1px solid rgb(153, 151, 151);
+            padding-left: 150px;
+        }
+
+        .name .z3 {
+            width: 100px;
+            margin-left: 50px;
+            border-right: 1px solid rgb(153, 151, 151);
+        }
+
+        .name .z4 {
+            width: 100px;
+            margin-left: 50px;
+        }
+
+        .big {
+            float: left;
+        }
+
+
+        .name1 .z5 {
+            width: 1100px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgb(153, 151, 151);
+        }
+
+        .z5 input {
+            /* float: left; */
+            margin-top: 10px;
+            margin-left: 10px;
+
+            /* border: 1px solid rgb(153, 151, 151); */
+            /* background-color: rgb(253, 253, 253); */
+        }
+
+
+
+        .book {
+            float: left;
+            margin-top: 10px;
+        }
+
+        .pho1 {
+            float: left;
+            margin-left: 30px;
+        }
+
+        .pho1 input {
+            float: left;
+            margin-top: 40px;
+        }
+
+        .pho1 img {
+            float: left;
+            width: 90px;
+            height: 90px;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+
+        .write {
+            float: left;
+            width: 330px;
+            margin-left: 10px;
+            margin-top: 20px;
+            /* background-color: rgb(42, 161, 132); */
+        }
+
+        .write a {
+            color: rgb(0, 102, 204);
+        }
+
+        .write a:hover {
+            color: rgb(228, 126, 58);
+        }
+
+        .price,
+        .reque,
+        .reduce,
+        .add {
+            float: left;
+            height: 30px;
+            width: 150px;
+            /* background-color: rgb(42, 161, 132); */
+            margin-top: 30px;
+        }
+
+        .price li,
+        .reque li,
+        .reduce li,
+        .add li {
+            position: absolute;
+            float: left;
+            margin-left: 40px;
+            line-height: 40px;
+        }
+
+
+        span {
+            font-size: 15px;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .reduce a:hover {
+            color: rgb(228, 126, 58);
+        }
+
+        .add button {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        .add input {
+            text-align: center;
+            width: 20px;
+            height: 20px;
+        }
+
+        .rep {
+            height: 40px;
+            width: 1100px;
+            float: right;
+        }
+
+        .all8 {
+            line-height: 40px;
+            float: right;
+            margin-right: 50px;
+            font-size: 20px;
+        }
+
+        .rep .amount-sum {
+            font-size: 20px;
+        }
+
+        .rep .price-sum {
+            /* position: absolute; */
+            /* font-size: 10px;
+            margin-left: 10px;
+            margin-top: 90px; */
+            float: right;
+            margin-left: 30px;
+            color: rgb(228, 57, 60);
+        }
+
+        /* {
+            float: right;
+
+
+            margin-right: 100px;
+            margin-left: 100px;
+            margin-top: -40px;
+            font-size: 20px;
+        } */
+
+        .back .button1 {
+            float: left;
+            margin-top: 20px;
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            font-size: 15px;
+            margin-bottom: 100px;
+        }
+
+        .back .button2 {
+            float: right;
+            margin-top: 20px;
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            margin-right: 20px;
+        }
+
+        .p-action a,
+        .s-action a {
+            float: left;
+            margin-left: 10px;
+            line-height: 40px;
+            margin-left: 50px;
+        }
+
+        .check-cart-item {
+            background-color: rgba(197, 224, 13, .4);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header w">
+        <!-- logo -->
+        <div class="A">
+            <div class="logo">
+                <a name="a1">
+                    <a href="首页.html"><b>123<br>&nbsp;&nbsp;&nbsp;文学城</b></a>
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#" target="_blank">联系客服</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="B">
+            <div class="shopp">
+                <ul>
+                    <li class="z1">我的购物车</li>
+                    <li class="z2"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="all">
+            <div class="name">
+                <ul>
+                    <li class="z2">商品</li>
+                    <li class="z3">价钱</li>
+                    <li class="z3">小计</li>
+                    <li class="z3">操作</li>
+                    <li class="z4">数量</li>
+                </ul>
+            </div>
+            <div class="big">
+                <div class="name1">
+                    <ul>
+                        <li class="z5"><input type="checkbox" class="checkall">长顾网图书音像<span>(会员支付七五折)</span></li>
+                        <div class="book">
+                            <li>
+                                <div class="pho1">
+                                    <input type="checkbox" class="j-checkbox"><img src="./images/书1.jpg" alt="">
+                                </div>
+                                <div class="write">
+                                    <a href="javascript:;">（套装）数据结构(C语言版)+数据结构题集(C语言版)（套装共2册）
+                                    </a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="price">
+                            <li>￥73.1</li>
+                        </div>
+                        <div class="reque">
+                            <li>￥73.1</li>
+                        </div>
+                        <div class="reduce">
+                            <li><a href="javascript:;">删除</a></li>
+                        </div>
+                        <div class="add">
+                            <li> <button class="increment">+</button><input type="text" class="itxt" value="1"><button
+                                    class="decrement">-</button></li>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="big">
+                <div class="name1">
+                    <ul>
+                        <li class="z5"></li>
+                        <div class="book">
+                            <li>
+                                <div class="pho1">
+                                    <input type="checkbox" class="j-checkbox"><img src="./images/书2.jpg" alt="">
+                                </div>
+                                <div class="write">
+                                    <a href="#">红楼梦(全2册)</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="price">
+                            <li>￥65.4</li>
+                        </div>
+                        <div class="reque">
+                            <li>￥65.4</li>
+                        </div>
+                        <div class="reduce">
+                            <li><a href="javascript:;">删除</a></li>
+                        </div>
+                        <div class="add">
+                            <li><button class="increment">+</button><input type="text" class="itxt" value="1"><button
+                                    class="decrement">-</button></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="big">
+                <div class="name1">
+                    <ul>
+                        <li class="z5"></li>
+                        <div class="book">
+                            <li>
+                                <div class="pho1">
+                                    <input type="checkbox" class="j-checkbox"><img src="./images/书3.jpg" alt="">
+                                </div>
+                                <div class="write">
+                                    <a href="#">数据结构——C++语言描述
+                                    </a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="price">
+                            <li>￥60.5</li>
+                        </div>
+                        <div class="reque">
+                            <li>￥60.5</li>
+                        </div>
+                        <div class="reduce">
+                            <li><a href="#">删除</a></li>
+                        </div>
+                        <div class="add">
+                            <li> <button class="increment">+</button><input type="text" class="itxt" value="1"><button
+                                    class="decrement">-</button></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="big">
+                <div class="name1">
+                    <ul>
+                        <li class="z5"></li>
+                        <div class="book">
+                            <li>
+                                <div class="pho1">
+                                    <input type="checkbox" class="j-checkbox"><img src="./images/书4.jpg" alt="">
+                                </div>
+                                <div class="write">
+                                    <a href="#">百题大过关 中考英语 语言知识运用百题 修订版 2022
+                                    </a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="price">
+                            <li>￥30.5</li>
+                        </div>
+                        <div class="reque">
+                            <li>￥30.5</li>
+                        </div>
+                        <div class="reduce">
+                            <li><a href="javascript:;">删除</a></li>
+                        </div>
+                        <div class="add">
+                            <li>
+                                <button class="increment">+</button><input type="text" class="itxt" value="1"><button
+                                    class="decrement">-</button>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="big">
+                <div class="name1">
+                    <ul>
+                        <li class="z5"></li>
+                    </ul>
+                    <div class="rep">
+                        <div class="p-action"><a href="javascript:;">删除所选中的商品</a></div>
+                        <div class="s-action"><a href="javascript:;">清空购物车</a></div>
+                        <div class="all8">合计
+                            <span class="amount-sum">1件</span>
+                            <spanm class="price-sum">0.00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="back">
+            <button class="button1">返回购物</button>
+            <button class="button2">结算</button>
+        </div>
+    </div>
+</body>
+
+</html>
